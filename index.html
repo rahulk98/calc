@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="calc.css" type="text/css">
+         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <h1 style="margin-left:630px;">Calculator</h1>
+</head>
+<body>
+<div id="c">
+<div id="res"><p id="screen"></p></div>
+<div id="calc">
+ <button onclick="getNum(1)" style="height:30px;width:50px;" type="button" class="btn">1
+    </button>
+  <button onclick="getNum(2)" style="height:30px;width:50px;" type="button" class="btn">2
+    </button>
+  <button onclick="getNum(3)" style="height:30px;width:50px;" type="button" class="btn">3
+    </button>
+ <button onclick="sum()" style="height:30px;width:50px;" type="button" class="btn">+
+    </button><br>
+  <button onclick="getNum(4)" style="height:30px;width:50px;" type="button" class="btn">4
+    </button>
+  <button onclick="getNum(5)" style="height:30px;width:50px;" type="button" class="btn">5
+    </button>
+  <button onclick="getNum(6)" style="height:30px;width:50px;" type="button" class="btn">6
+    </button>
+ <button onclick="diff()" style="height:30px;width:50px;" type="button" class="btn">-
+    </button><br>
+  <button onclick="getNum(7)" style="height:30px;width:50px;" type="button" class="btn">7
+    </button>
+  <button onclick="getNum(8)" style="height:30px;width:50px;" type="button" class="btn">8
+    </button>
+  <button onclick="getNum(9)" style="height:30px;width:50px;" type="button" class="btn">9
+    </button>
+ <button onclick="prod()" style="height:30px;width:50px;" type="button" class="btn">*
+    </button><br>
+  <button onclick="getNum(0)" style="height:30px;width:50px;" type="button" class="btn">0
+    </button>
+
+ <button onclick="reset()" style="height:30px;width:50px;" type="button" class="btn">AC</button>
+
+ <button onclick="equal()" style="height:30px;width:50px;" type="button" class="btn">=
+    </button>
+    <button onclick="quot()" style="height:30px;width:50px;" type="button" class="btn">/
+    </button><br>
+
+</div>
+</div>
+<script>
+    var b="",s="",d="",r="",q="",op="",ans="";
+    p=document.getElementById("screen");
+    function getNum(a)
+    {
+        b=b+a;
+        p.innerHTML=parseInt(b);
+    }
+    function sum()
+    {
+        if(ans!="")
+        {
+            console.log(s);
+            console.log(b);
+
+            s=parseInt(ans);
+            console.log(s);
+            console.log(ans);
+            ans="";
+        }
+        else if(s==="")
+        s=parseInt(b);
+        else
+       {    s=parseInt(s)+parseInt(b);
+            ans=s;
+       }
+        p.innerHTML="";
+        b="";
+        op="+";
+       }
+    function equal()
+    {
+    if(op==="+")
+    { sum();
+    ans=parseInt(s);
+    p.innerHTML=parseInt(s);
+    s="";
+    }
+    else if(op==="-")
+    {
+    diff();
+    p.innerHTML=parseInt(d);
+    ans=parseInt(d);
+    d="";
+    }
+    else if(op==="*")
+    {
+        prod();
+        p.innerHTML=parseInt(r);
+        ans=parseInt(r);
+        r="";
+    }
+    else if(op==="/")
+    {
+        quot();
+        p.innerHTML=parseFloat(q);
+        ans=parseInt(q);
+        q="";
+    }
+console.log(ans);
+
+   }
+   function diff()
+    {
+        if(ans!=="")
+        {
+            d=parseInt(ans);
+            ans="";
+        }
+        else if(d==="")
+        d=parseInt(b);
+        else
+       {    d=parseInt(d)-parseInt(b);
+            ans=d;
+       }
+        p.innerHTML="";
+        b="";
+        op="-";
+   }
+    function prod()
+    {
+    if(ans!=="")
+        {
+            r=parseInt(ans);
+            ans="";
+        }
+    else if(r==="")
+    r=parseInt(b);
+    else
+    {
+    r=parseInt(r)*parseInt(b);
+    ans=r;
+    }
+    p.innerHTML="";
+    b="";
+    op="*";
+    }
+    function quot()
+    {
+    if(ans!=="")
+        {
+            q=parseInt(ans);
+            ans="";
+        }
+    else if(q==="")
+    q=parseFloat(b);
+    else
+    {
+        q=parseFloat(q)/parseFloat(b);
+        ans=q;
+    }
+    p.innerHTML="";
+    b="";
+    op="/";
+    }
+    function reset()
+    {
+        b="";
+        op="";
+        s="";
+        q="";
+        d="";
+        r="";
+        p.innerHTML="";
+        ans="";
+    }
+</script>
+
+</body>
+</html>
